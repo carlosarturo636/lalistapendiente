@@ -6,6 +6,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SocialIcon } from "@/components/ui/SocialIcon";
 import { contactChannels, socialLinks } from "@/lib/content/site";
 import { join } from "@/lib/content/pages";
 
@@ -39,6 +40,7 @@ export default function Page() {
               {availableSocials.map((social) => (
                 <li key={social.platform}>
                   <Button href={social.url!} external variant="secondary">
+                    <SocialIcon platform={social.platform} />
                     {social.label}
                   </Button>
                 </li>
@@ -52,7 +54,10 @@ export default function Page() {
             <ul className="flex flex-wrap gap-2">
               {pendingSocials.map((social) => (
                 <li key={social.platform}>
-                  <Badge tone="muted">{social.label} · próximamente</Badge>
+                  <Badge tone="muted" className="gap-1.5">
+                    <SocialIcon platform={social.platform} className="h-3.5 w-3.5" />
+                    {social.label} · próximamente
+                  </Badge>
                 </li>
               ))}
             </ul>

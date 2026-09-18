@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/ui/Container";
+import { SocialIcon } from "@/components/ui/SocialIcon";
 import { navLinks, primaryAction, site, socialLinks } from "@/lib/content/site";
 
 export function Footer() {
@@ -56,8 +57,9 @@ export function Footer() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[0.9375rem] text-ivory-200/85 underline-offset-4 transition-colors hover:text-ivory-50 hover:underline"
+                      className="inline-flex items-center gap-2 text-[0.9375rem] text-ivory-200/85 underline-offset-4 transition-colors hover:text-ivory-50 hover:underline"
                     >
+                      <SocialIcon platform={social.platform} />
                       {social.label}
                     </a>
                   </li>
