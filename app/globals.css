@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Design tokens — La lista pendiente                                  */
+/* Un cuaderno abierto: marfil cálido, verde profundo, terracota.       */
+/* ------------------------------------------------------------------ */
+@theme inline {
+  /* Marfil — fondo principal */
+  --color-ivory-50: #fdfbf7;
+  --color-ivory-100: #f7f3ea;
+  --color-ivory-200: #efe8d9;
+  --color-ivory-300: #e3d8c2;
+  --color-ivory-400: #d2c3a6;
+
+  /* Verde profundo — títulos y superficies destacadas */
+  --color-forest-50: #eef3f1;
+  --color-forest-100: #d5e2dd;
+  --color-forest-200: #abc4bc;
+  --color-forest-300: #7aa094;
+  --color-forest-400: #4f7c6d;
+  --color-forest-500: #356254;
+  --color-forest-600: #2b5348;
+  --color-forest-700: #24483f;
+  --color-forest-800: #1b352f;
+  --color-forest-900: #12241f;
+
+  /* Terracota — acentos y acciones */
+  --color-clay-50: #fbf0ed;
+  --color-clay-100: #f4dbd4;
+  --color-clay-200: #e7b7ab;
+  --color-clay-300: #d78d7c;
+  --color-clay-400: #c66d58;
+  --color-clay-500: #b6533d;
+  --color-clay-600: #9a4331;
+  --color-clay-700: #7b3527;
+  --color-clay-800: #5c281d;
+
+  /* Amarillo suave — detalles, fondos y subrayados */
+  --color-honey-100: #faf1d9;
+  --color-honey-200: #f5e4b8;
+  --color-honey-300: #ebcb77;
+  --color-honey-400: #dcb352;
+  --color-honey-500: #bd943a;
+
+  /* Carbón — texto */
+  --color-ink-400: #7b8480;
+  --color-ink-500: #5d6763;
+  --color-ink-600: #454d4a;
+  --color-ink-700: #343b38;
+  --color-ink-800: #2b322f;
+  --color-ink-900: #252b28;
+
+  --font-display: var(--font-display-src);
+  --font-sans: var(--font-sans-src);
+
+  --shadow-card: 0 1px 2px -1px rgb(37 43 40 / 0.06), 0 8px 24px -16px rgb(37 43 40 / 0.18);
+  --shadow-lift: 0 18px 48px -24px rgb(36 72 63 / 0.35);
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-ivory-300);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ivory-100);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    /* Papel: una trama muy sutil de líneas de cuaderno. */
+    background-image: linear-gradient(
+      to bottom,
+      transparent calc(100% - 1px),
+      rgb(36 72 63 / 0.03) calc(100% - 1px)
+    );
+    background-size: 100% 2.25rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Foco visible y consistente en toda la interfaz. */
+  :focus-visible {
+    outline: 2px solid var(--color-clay-500);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  /* Subrayado a mano alzada, como una anotación sobre la palabra. */
+  .underline-sketch {
+    background-image: linear-gradient(
+      to top,
+      var(--color-honey-300) 0,
+      var(--color-honey-300) 0.35em,
+      transparent 0.35em
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-inline: 0.1em;
+  }
+
+  .text-balance-none {
+    text-wrap: initial;
+  }
+}
+
+/* El scroll suave y las animaciones se desactivan si la persona
+   prefiere menos movimiento. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
