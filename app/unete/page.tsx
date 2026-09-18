@@ -24,6 +24,7 @@ const contactReasons = [
 
 export default function Page() {
   const availableSocials = socialLinks.filter((social) => social.url);
+  const pendingSocials = socialLinks.filter((social) => !social.url);
 
   return (
     <>
@@ -32,28 +33,31 @@ export default function Page() {
       <Section size="wide" id="redes">
         <SectionHeading eyebrow="Síguenos en redes" title="Dónde encontrarnos" className="mb-7" />
 
-        {availableSocials.length > 0 ? (
-          <ul className="flex flex-wrap gap-3">
-            {availableSocials.map((social) => (
-              <li key={social.platform}>
-                <Button href={social.url!} external variant="secondary">
-                  {social.label}
-                </Button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div className="flex flex-col items-start gap-4 rounded-3xl border border-dashed border-forest-700/22 bg-ivory-50/70 p-7">
+        <div className="flex flex-col items-start gap-5">
+          {availableSocials.length > 0 ? (
+            <ul className="flex flex-wrap gap-3">
+              {availableSocials.map((social) => (
+                <li key={social.platform}>
+                  <Button href={social.url!} external variant="secondary">
+                    {social.label}
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          ) : (
             <p className="max-w-2xl leading-relaxed text-ink-600">{join.social.body}</p>
+          )}
+
+          {pendingSocials.length > 0 && (
             <ul className="flex flex-wrap gap-2">
-              {socialLinks.map((social) => (
+              {pendingSocials.map((social) => (
                 <li key={social.platform}>
                   <Badge tone="muted">{social.label} · próximamente</Badge>
                 </li>
               ))}
             </ul>
-          </div>
-        )}
+          )}
+        </div>
       </Section>
 
       <Section tone="paper" className="border-y border-ivory-300/70" size="wide" id="colabora">

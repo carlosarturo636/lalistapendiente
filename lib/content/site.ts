@@ -18,10 +18,14 @@ export const navLinks: NavLink[] = [
 
 export const primaryAction = { href: "/unete", label: "Únete" } as const;
 
-/** Sin `url` todavía: no existen cuentas oficiales confirmadas.
- *  Cuando existan, basta añadir la URL real y el enlace se activa solo. */
+/** Las cuentas sin `url` todavía no existen: se muestran como "próximamente".
+ *  Al añadir la URL real, el enlace se activa solo. */
 export const socialLinks: SocialLink[] = [
-  { platform: "instagram", label: "Instagram" },
+  {
+    platform: "instagram",
+    label: "Instagram",
+    url: "https://www.instagram.com/lalistapendiente",
+  },
   { platform: "tiktok", label: "TikTok" },
   { platform: "youtube", label: "YouTube" },
 ];
